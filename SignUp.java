@@ -20,11 +20,18 @@ public class SignUp extends User{
 		BufferedReader reader = new BufferedReader(input);
 		String line;
 		try {
+			
 			while ((line = reader.readLine()) != null) {
+				
 				if ((this.getUsername().indexOf(line) == -1) && (this.getPassword().indexOf(line) == -1)) {
+					
 					return false;
 				}
 			}
+			if (line == null) {
+				return false;
+			}
+			 
 			reader.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -42,6 +49,14 @@ public class SignUp extends User{
 				FileWriter passwordDB_writer = new FileWriter(filename, true);
 				BufferedWriter bufferedWriter = new BufferedWriter(passwordDB_writer);
 				bufferedWriter.newLine();
+				bufferedWriter.write(this.getUsername());
+				bufferedWriter.write(" ");
+				bufferedWriter.write(this.getPassword());
+				bufferedWriter.close();
+			}
+			else {
+				FileWriter passwordDB_writer = new FileWriter(filename);
+				BufferedWriter bufferedWriter = new BufferedWriter(passwordDB_writer);
 				bufferedWriter.write(this.getUsername());
 				bufferedWriter.write(" ");
 				bufferedWriter.write(this.getPassword());
