@@ -24,7 +24,8 @@ public class SignIn extends User{
 			try {
 				String line;
 				while ((line = reader.readLine()) != null) {
-					if ((this.getUsername().indexOf(line) != -1) && (this.getPassword().indexOf(line) != -1)) {
+					if ((line.indexOf(this.getUsername()) != -1) && (line.indexOf(this.getPassword()) != -1)) {
+						
 						return true;
 					}
 				}
